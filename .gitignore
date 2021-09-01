@@ -110,3 +110,5 @@ fabric.properties
 
 target/
 /.idea/runConfigurations.xml
+/.idea/codeStyles/Project.xml
+/.idea/codeStyles/codeStyleConfig.xml

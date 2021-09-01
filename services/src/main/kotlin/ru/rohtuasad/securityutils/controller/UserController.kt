@@ -11,7 +11,7 @@ import java.util.*
 @RequestMapping("/v1")
 class UserController(val userRepository: UserRepository) {
     @GetMapping("/user/{id}")
-    fun getUserProfile(@PathVariable id: Long): ResponseEntity<Optional<User>> {
+    fun getUserProfile(@PathVariable id: UUID): ResponseEntity<Optional<User>> {
         return ResponseEntity(userRepository.findById(id), HttpStatus.OK)
     }
 

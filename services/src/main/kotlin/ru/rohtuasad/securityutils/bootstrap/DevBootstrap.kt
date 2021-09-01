@@ -10,7 +10,8 @@ import ru.rohtuasad.securityutils.repository.UserRepository
 @Component
 class DevBootstrap
 @Autowired
-constructor(private val userRepository: UserRepository) : ApplicationListener<ContextRefreshedEvent> {
+constructor(private val userRepository: UserRepository) :
+    ApplicationListener<ContextRefreshedEvent> {
     override fun onApplicationEvent(p0: ContextRefreshedEvent) {
         val user = User("Name", "login", "user@user.com")
         userRepository.save(user)

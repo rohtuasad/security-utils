@@ -1,14 +1,12 @@
 package ru.rohtuasad.securityutils.model
 
 import com.fasterxml.jackson.annotation.JsonProperty
+import org.springframework.data.annotation.Id
+import org.springframework.data.domain.Persistable
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.GenerationType
-import javax.persistence.Id
+import java.util.*
 
-@Entity
-class User() {
+class User() : Persistable<UUID> {
     fun setEncodedPassword(value: String) {
         this.password = BCryptPasswordEncoder().encode(value)
     }
@@ -20,9 +18,8 @@ class User() {
     }
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @JsonProperty("id")
-    private var id: Long = 0
+    @JsonProperty("user-id")
+    private var userId: UUID = UUID.randomUUID()
 
     @JsonProperty("name")
     private lateinit var name: String
@@ -35,4 +32,11 @@ class User() {
 
     @JsonProperty("password")
     lateinit var password: String
+    override fun getId(): UUID? {
+        return UUID.randomUUID()
+    }
+
+    override fun isNew(): Boolean {
+        return true
+    }
 }
