@@ -19,4 +19,10 @@ class UserController(val userRepository: UserRepository) {
     fun getUserProfile(): MutableIterable<User> {
         return userRepository.findAll()
     }
+
+    @PostMapping("/user")
+    fun registerUser(@RequestBody user: User) {
+        user.setEncodedPassword(user.password)
+        userRepository.save(user)
+    }
 }
