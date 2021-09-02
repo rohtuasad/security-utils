@@ -11,7 +11,10 @@ class User() : Persistable<UUID> {
         this.password = BCryptPasswordEncoder().encode(value)
     }
 
-    constructor(name: String, login: String, email: String) : this() {
+    constructor(name: String, login: String, email: String) : this(null, name, login, email)
+
+    constructor(userId: UUID?, name: String, login: String, email: String) : this() {
+        this.userId = userId
         this.name = name
         this.email = email
         this.login = login
@@ -19,10 +22,10 @@ class User() : Persistable<UUID> {
 
     @Id
     @JsonProperty("user-id")
-    private var userId: UUID = UUID.randomUUID()
+    private var userId: UUID? = UUID.randomUUID()
 
     @JsonProperty("name")
-    private lateinit var name: String
+    lateinit var name: String
 
     @JsonProperty("login")
     private lateinit var login: String
@@ -32,11 +35,12 @@ class User() : Persistable<UUID> {
 
     @JsonProperty("password")
     lateinit var password: String
+
     override fun getId(): UUID? {
         return UUID.randomUUID()
     }
 
     override fun isNew(): Boolean {
-        return true
+        return this.userId == null
     }
 }

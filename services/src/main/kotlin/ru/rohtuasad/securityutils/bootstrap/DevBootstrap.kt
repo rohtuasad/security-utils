@@ -14,6 +14,8 @@ constructor(private val userRepository: UserRepository) :
     ApplicationListener<ContextRefreshedEvent> {
     override fun onApplicationEvent(p0: ContextRefreshedEvent) {
         val user = User("Name", "login", "user@user.com")
-        userRepository.save(user)
+        val saved = userRepository.save(user)
+        saved.name = "NewName"
+        userRepository.save(saved)
     }
 }
