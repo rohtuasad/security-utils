@@ -1,4 +1,4 @@
-package ru.rohtuasad.securityutils.model
+package ru.rohtuasad.securityutils.user.model
 
 import com.fasterxml.jackson.annotation.JsonProperty
 import org.springframework.data.annotation.Id

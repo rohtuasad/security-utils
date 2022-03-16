@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.ApplicationListener
 import org.springframework.context.event.ContextRefreshedEvent
 import org.springframework.stereotype.Component
-import ru.rohtuasad.securityutils.model.User
-import ru.rohtuasad.securityutils.repository.UserRepository
+import ru.rohtuasad.securityutils.user.model.User
+import ru.rohtuasad.securityutils.user.repository.UserRepository
 
 @Component
 class DevBootstrap

@@ -1,10 +1,10 @@
-package ru.rohtuasad.securityutils.controller
+package ru.rohtuasad.securityutils.user.controller
 
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
-import ru.rohtuasad.securityutils.model.User
-import ru.rohtuasad.securityutils.repository.UserRepository
+import ru.rohtuasad.securityutils.user.model.User
+import ru.rohtuasad.securityutils.user.repository.UserRepository
 import java.util.*
 
 @RestController
