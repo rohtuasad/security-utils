@@ -6,7 +6,7 @@ import ru.rohtuasad.securityutils.user.repository.UserRepository
 import java.util.*
 
 @Service
-class UserService(val userRepository: UserRepository) {
+class UserService(private val userRepository: UserRepository) {
     fun getUserProfile(id: UUID): User {
         val user = userRepository.findById(id)
         if (user.isPresent) {
