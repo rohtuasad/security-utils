@@ -5,13 +5,13 @@ import org.springframework.data.annotation.Id
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 import java.util.*
 
-class User(
+data class User(
     @JsonProperty("name")
-    val name: String,
+    var name: String,
     @JsonProperty("login")
-    val login: String,
+    var login: String,
     @JsonProperty("email")
-    val email: String
+    var email: String
 ) {
     @Id
     @JsonProperty("user-id")
