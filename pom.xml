@@ -16,7 +16,6 @@
 
     <properties>
         <java.version>11</java.version>
-        <kotlin.version>1.4.21</kotlin.version>
     </properties>
-    <packaging>pom</packaging>
+  <packaging>pom</packaging>
 </project>
