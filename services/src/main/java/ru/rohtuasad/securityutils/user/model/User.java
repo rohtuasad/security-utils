@@ -1,15 +1,19 @@
 package ru.rohtuasad.securityutils.user.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import java.util.Collection;
 import java.util.UUID;
+import jdk.jshell.spi.ExecutionControl.NotImplementedException;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 @RequiredArgsConstructor
 @Data
-public class User {
+public class User implements UserDetails {
   @Id
   @JsonProperty("user-id")
   @Column("USER_ID")
@@ -18,4 +22,34 @@ public class User {
   private final String login;
   private String password;
   private final String email;
+
+  @Override
+  public Collection<? extends GrantedAuthority> getAuthorities() {
+    throw new UnsupportedOperationException();
+  }
+
+  @Override
+  public String getUsername() {
+    return login;
+  }
+
+  @Override
+  public boolean isAccountNonExpired() {
+    return true;
+  }
+
+  @Override
+  public boolean isAccountNonLocked() {
+    return true;
+  }
+
+  @Override
+  public boolean isCredentialsNonExpired() {
+    return true;
+  }
+
+  @Override
+  public boolean isEnabled() {
+    return true;
+  }
 }
