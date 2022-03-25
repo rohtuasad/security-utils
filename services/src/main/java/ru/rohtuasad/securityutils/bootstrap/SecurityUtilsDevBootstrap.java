@@ -9,7 +9,7 @@ import ru.rohtuasad.securityutils.user.service.UserService;
 
 @Component
 @RequiredArgsConstructor
-class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> {
+class SecurityUtilsDevBootstrap implements ApplicationListener<ContextRefreshedEvent> {
 
   private final UserService userService;
 

@@ -9,6 +9,7 @@
     <version>0.0.1-SNAPSHOT</version>
     <relativePath>../pom.xml</relativePath> <!-- lookup parent from repository -->
   </parent>
+  <groupId>ru.rohtuasad</groupId>
   <artifactId>security-utils-services</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <name>services</name>
