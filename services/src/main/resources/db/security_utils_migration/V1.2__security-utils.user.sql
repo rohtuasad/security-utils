@@ -10,5 +10,6 @@ create table security_utils.user
         constraint email_uk
             unique,
     name     varchar(50),
+    is_enabled  boolean NOT NULL DEFAULT true,
     password varchar(60)
 );

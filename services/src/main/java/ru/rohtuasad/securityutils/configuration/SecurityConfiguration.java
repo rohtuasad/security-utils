@@ -22,7 +22,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     httpSecurity.headers().frameOptions().disable();
   }
 
-  @Bean("SecurityUtilsPasswordEncoder")
+  @Bean
   public PasswordEncoder passwordEncoder() {
     return new BCryptPasswordEncoder();
   }
