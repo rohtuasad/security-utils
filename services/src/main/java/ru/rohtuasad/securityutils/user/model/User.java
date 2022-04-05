@@ -8,11 +8,13 @@ import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
+import org.springframework.data.relational.core.mapping.Table;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 @RequiredArgsConstructor
 @Data
+@Table("SECURITY_UTILS\".\"USER")
 public class User implements UserDetails {
   @Id
   @JsonProperty("user-id")
