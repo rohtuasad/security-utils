@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import lombok.SneakyThrows;
@@ -12,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import ru.rohtuasad.securityutils.SecurityUtilsServicesConfig;
+import ru.rohtuasad.securityutils.user.controller.UserAlreadyExistException;
 import ru.rohtuasad.securityutils.user.model.User;
 
 @SpringBootTest(classes = {SecurityUtilsServicesConfig.class})
@@ -50,5 +52,19 @@ class UserServiceImplTest {
     userService.registerUser(user);
     assertNotNull(user.getId());
     assertTrue(passwordEncoder.matches("newpassword", user.getPassword()));
+
+    User existingLoginUser = new User("NewUser", "newlogin", "newuser1@user.com");
+    final UserAlreadyExistException loginExistsException = assertThrows(
+        UserAlreadyExistException.class,
+        () -> userService.registerUser(existingLoginUser));
+    assertEquals("There is an account with that login: newlogin",
+        loginExistsException.getMessage());
+
+    User existingEmailUser = new User("NewUser", "newlogin1", "newuser@user.com");
+    final UserAlreadyExistException emailExistsException = assertThrows(
+        UserAlreadyExistException.class,
+        () -> userService.registerUser(existingEmailUser));
+    assertEquals("There is an account with that email address: newuser@user.com",
+        emailExistsException.getMessage());
   }
 }
