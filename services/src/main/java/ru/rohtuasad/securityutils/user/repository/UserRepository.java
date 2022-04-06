@@ -7,5 +7,6 @@ import ru.rohtuasad.securityutils.user.model.User;
 
 @Repository
 public interface UserRepository extends CrudRepository<User, UUID> {
-
+  User findByEmail(String email);
+  User findByLogin(String login);
 }

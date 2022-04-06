@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import lombok.SneakyThrows;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -14,10 +15,10 @@ import ru.rohtuasad.securityutils.SecurityUtilsServicesConfig;
 import ru.rohtuasad.securityutils.user.model.User;
 
 @SpringBootTest(classes = {SecurityUtilsServicesConfig.class})
-class UserServiceTest {
+class UserServiceImplTest {
 
   @Autowired
-  private UserService userService;
+  private UserServiceImpl userService;
   @Autowired
   private PasswordEncoder passwordEncoder;
 
@@ -38,6 +39,7 @@ class UserServiceTest {
     assertTrue(passwordEncoder.matches("password", userProfile.getPassword()));
   }
 
+  @SneakyThrows
   @Test
   public void registerUser() {
     User user = new User("NewUser", "newlogin", "newuser@user.com");
