@@ -1,9 +1,9 @@
 package ru.rohtuasad.securityutils.user.controller;
 
-import java.util.List;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,6 +16,7 @@ import ru.rohtuasad.securityutils.user.service.UserService;
 @RestController
 @RequestMapping("/v1")
 @RequiredArgsConstructor
+@CrossOrigin(origins = "${security-utils.web.cors:http://localhost:3000}")
 public class UserController {
 
   private final UserService userService;
